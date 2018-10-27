@@ -1,0 +1,15 @@
+
+Brainfuck interpreter.
+
+Reading (,) and writing (.) over serial port.
+
+Most of the trickiness is dealing with looping: "[" and "]".
+
+Execution starts when <return> is pressed.
+And finishes if we run off the end of the program, or we error.
+Errors are: memory-pointer under/over flow, nesting count overflow
+
+leds display: running, waiting-for-rx, -,-,-, 3x error conditions
+
+Program is hardcoded - currently "fibs"
+Currently FPGA regs are used for memory, so very limited. Plan to use SDRAM.
