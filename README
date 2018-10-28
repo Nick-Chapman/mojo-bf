@@ -13,3 +13,6 @@ leds display: running, waiting-for-rx, -,-,-, 3x error conditions
 
 Program is hardcoded - currently "fibs"
 Currently FPGA regs are used for memory, so very limited. Plan to use SDRAM.
+
+
+Re-coded interpreter in a more standard FSM style, for comparison's sake. No sure what I prefer.

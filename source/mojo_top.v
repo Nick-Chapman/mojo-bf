@@ -62,7 +62,8 @@ module mojo_top
       .tx_block(avr_rx_busy)
       );
    
-   bf_top bt
+   //bf_top bt
+   bf_fsm_style bt
      (.clk(clk),
       .rst(rst),
       .rx_data(rx_data),
