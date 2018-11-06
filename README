@@ -16,3 +16,25 @@ Currently FPGA regs are used for memory, so very limited. Plan to use SDRAM.
 
 
 Re-coded interpreter in a more standard FSM style, for comparison's sake. No sure what I prefer.
+
+
+Modified to access memory over an interface suitable for memory with latency.
+
+Implement the memory interface with registers in the FPGA but simulating a delay.
+
+Setup to use real SDRAM
+Making use of sdram controller from the mojo tutorial.
+And writing an adapter to map the interface exposed by the sdram controller
+to the interface defined for the bf interpreter.
+
+Also needed to code an initialization phase for the memory, because many
+bf programs (including the "fibs" example) assume the memory is initialized to 0.
+
+Discover issues when talking to real sdram...
+
+Including problem when sequencing a write,read to the same location.
+It seems the read does not see the effect of the write unless there is a sufficient delay between the read and the write! This seems wrong!
+
+But can neither find a bug in the sdram controller, or a statement in the microsim spec which states such a delay is required.
+
+Make workaround to force a fixed delay after every operation via the bf memory interface. With a delay of 50 cycles (but not 20) we can get the fibs example working.
